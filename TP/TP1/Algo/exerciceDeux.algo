@@ -1,0 +1,67 @@
+Programme aPuissanceN
+Debut
+	Avec :
+		Fonction puissanceRecursive(a : Reel , n : Entier  ) Retourne Reel 
+		n : Entier 
+		a : Reel 
+		
+	Afficher "Saisir n : "
+	Saisir n
+	Controler n>=0
+	
+	Afficher "Saisir a : "
+	Saisir a
+	
+	Afficher "a puissance n (version récursive) = ", puissanceRecursive(a,n)
+	
+	Afficher "a puissance n (version itérative) = ", puissanceIterative(a,n)
+Fin
+
+/*
+Cette fonction retourne un nombre a eleve a la puissance n 
+Parametres : 
+- a : nombre à elever à la puissance n
+- n : puissance donnée
+Précondition :
+a >= 0
+n >= 0
+Retourne a à la puissance n
+*/
+Fonction puissanceRecursive(a : Reel , n : Entier  ) Retourne Reel 
+Debut 
+	Avec : 
+		tmp : Reel
+	
+	Si n = 0 Alors 
+		Retourne 1.0
+	Sinon 
+		tmp <- puissance(a, n/2)
+		tmp <- tmp * tmp 
+		Si n mod 2 != 0 Alors 
+			tmp <- tmp * a
+		FinSi 
+		Retourne tmp
+	FinSi 
+Fin 
+
+/*
+Cette fonction retourne un nombre a eleve a la puissance n 
+Parametres : 
+- a : nombre à elever à la puissance n
+- n : puissance donnée
+Précondition :
+a >= 0
+n >= 0
+Retourne a à la puissance n
+*/
+Fonction puissanceIterative(a : Reel , n : Entier  ) Retourne Reel 
+Debut 
+	Avec :
+		i : Entier
+		
+	Pour i De n Faire 
+		a <- a * a
+	FinFaire
+	
+	Retourne a
+Fin 

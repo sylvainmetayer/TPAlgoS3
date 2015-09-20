@@ -1,0 +1,68 @@
+Programme PGCD
+Debut
+	Avec : 
+		a : Entier
+		b : Entier
+		Fonction PGCD(a : Entier , b : Entier ) Retourne Entier 
+		
+	Afficher "Calcul du pgcd de a et de b"
+	
+	Afficher "a : "
+	Saisir a
+	Controler a > 0
+		
+	Afficher "b : "
+	Saisir a
+	Controler b > 0
+		
+	Afficher "Résultat" , pgcdRecursive(a,b)
+Fin 
+
+/*
+Cette fonction calcule le pgcd de deux nombres sous forme recursive
+Paramètres :
+- a : premier entier
+- b : deuxième entier
+Préconditions : 
+- a > 0
+- b > 0
+Retourne le pgcd de a et b
+*/
+Fonction pgcdRecursive(a : Entier , b : Entier ) Retourne Entier 
+Debut
+	Avec :
+	
+	Si a=b Alors
+		Retourne a
+	Sinon
+		Si a > b Alors
+			Retourne pgcdRecursive(a-b, b)
+		Sinon 
+			Retourne pgcdRecursive(a, b-a)
+		FinSi 
+	FinSi 
+Fin
+
+/*
+Cette fonction calcule le pgcd de deux nombres sous forme iterative
+Paramètres :
+- a : premier entier
+- b : deuxième entier
+Préconditions : 
+- a > 0
+- b > 0
+Retourne le pgcd de a et b
+*/
+Fonction pgcdIterative(a : Entier , b : Entier ) Retourne Entier 
+Debut
+	Avec :
+	
+	Tant Que a != b Faire
+		Si a > b Alors
+			a <- a - b
+		Sinon 
+			b <- b - a
+		FinSi
+	Fin Faire 
+	Retourne a
+Fin
