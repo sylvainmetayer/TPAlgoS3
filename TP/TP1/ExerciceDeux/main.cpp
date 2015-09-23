@@ -11,11 +11,11 @@ int main(void)
 	clock_t temps_iteratif;
 
 	cout << "Calcul de a puissance n " << endl;
-
-	n = controleSaisieEntiere("n (positif ou nul) : ", -1, 99999);
-
+	
 	cout << "a : " << endl;
 	cin >> a; //pas besoin de controle
+	
+	n = controleSaisieEntiere("n (positif ou nul) : ", -1, INT_MAX);
 
 	srand(time(NULL));
 	cout << "a puissance n (version recursive) = " << puissanceRecursive(a, n) << endl;

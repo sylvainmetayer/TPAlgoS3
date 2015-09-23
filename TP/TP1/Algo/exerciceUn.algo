@@ -1,0 +1,57 @@
+Programme SommeEntiers
+Debut
+
+	Avec :
+		nombre : Entier
+		Fonction sommeEntiersIteratif(n : Entier ) Retourne Entier
+		Fonction sommeEntiersRecursif(n : Entier ) Retourne Entier
+		
+	Afficher "Nombre : "
+	Saisir nombre
+	Controler nombre >= 0
+	
+	Afficher "Somme des ", nombre, " premiers entiers = ", sommeEntiersIteratif(nombre)
+	Afficher "Somme des ", nombre, " premiers entiers = ", sommeEntiersRecursif(nombre)
+Fin 
+
+//Cette fonction calcule la somme
+//des n premiers entiers positifs ou nuls
+//Parametres : 
+//n : entier maximum donné
+//Préconditions
+//n >= 0
+//Retourne la somme des entiers de 0 à nombre
+
+Fonction sommeEntiersIteratif(n : Entier) Retourne Entier
+Debut
+
+	Avec :
+		i : Entier
+		resultat : Entier
+		
+	resultat <- 0
+	
+	Pour i De 1 A n Faire
+		resultat <- resultat+i
+	FinFaire
+	
+	Retourne resultat
+Fin 
+
+//Cette fonction calcule la somme
+//des n premiers entiers positifs ou nuls
+//Parametres : 
+//n : entier maximum donné
+//Préconditions
+//n >= 0
+//Retourne la somme des entiers de 0 à nombre
+
+Fonction sommeEntiersRecursif(n : Entier) Retourne Entier
+Debut
+
+	Si n=0 Alors
+		Retourne n
+	Sinon
+		Retourne n + sommeEntiersRecursif(n-1)
+	Finsi
+Fin 

@@ -11,8 +11,8 @@ int main(void)
 
 	cout << "Calcul du pgcd de a et b" << endl;
 
-	a = controleSaisieEntiere("a (positif) : ", 0, 99999);
-	b = controleSaisieEntiere("b (positif) : ", 0, 99999);
+	a = controleSaisieEntiere("a (positif) : ", 0, INT_MAX);
+	b = controleSaisieEntiere("b (positif) : ", 0, INT_MAX);
 
 	srand(time(NULL));
 	cout << "pgcd(a,b) (version recursive) = " << pgcdRecursive(a, b) << endl;

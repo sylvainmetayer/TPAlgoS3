@@ -15,7 +15,9 @@ Debut
 	Saisir a
 	Controler b > 0
 		
-	Afficher "Résultat" , pgcdRecursive(a,b)
+	Afficher "Résultat recursif " , pgcdRecursive(a,b)
+	
+	Afficher "Résultat itératif " , pgcdIterative(a,b)
 Fin 
 
 /*
