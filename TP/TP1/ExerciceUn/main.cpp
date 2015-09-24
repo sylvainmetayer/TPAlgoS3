@@ -20,7 +20,7 @@ int main() {
 	cout << "Somme des " << nombre << " premiers entiers (iteratif) = " << sommeEntiersIteratif(nombre) << endl << endl;
 	tps_iteratif = clock();
 
-	cout << "Temps iteration : " << (double)tps_iteratif / CLOCKS_PER_SEC << endl;
-	cout << "Temps recursion : " << (double)tps_recursif / CLOCKS_PER_SEC << endl;
+	cout << "Temps iteration (ms): " << (double)tps_iteratif / CLOCKS_PER_SEC << endl;
+	cout << "Temps recursion (ms): " << (double)tps_recursif / CLOCKS_PER_SEC << endl;
 	return 0;
 }
