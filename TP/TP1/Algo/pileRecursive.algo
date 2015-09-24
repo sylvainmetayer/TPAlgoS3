@@ -1,0 +1,36 @@
+Programme PileRecursive
+Debut
+	Avec :
+		res : Entier
+		p : Pile
+		n : Entier
+		a : Reel
+		
+	init(p);
+		
+	Afficher "Calcul de a puissance n"
+	
+	Afficher "a:"
+	Saisir a
+	
+	res <- a 
+	
+	Afficher "n:"
+	Saisir n
+		
+	Tant Que n > 1 Faire 
+		empiler(p,n)
+		n <- n/2
+	FinFaire
+	
+	Tant Que non(estVide(p)) Faire
+		res <- res * res
+		Si (sommet(p) modulo 2 != 0 ) Faire 
+			res = res * a
+		Fin Faire 
+		depiler(p)
+	FinFaire
+		
+Fin
+		
+		
