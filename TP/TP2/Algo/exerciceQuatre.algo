@@ -1,0 +1,36 @@
+/*
+Cette procédure permet de copier une chaine src dans une chaine dst.
+Paramètres : 
+	src : Chaine source
+	dst : Chaine destination
+Pré-conditions : 
+	/
+Post-conditions :
+	src est identique à dst
+*/
+Procedure copieChaine(src : Chaine , dst : Chaine )
+Debut
+	Avec :
+	
+	Contenu dst <- Contenu src
+	Si ( Contenu src) != '\O' Alors
+		copieChaine(src+1, dst+1)
+	FinSi 
+Fin 
+
+Programme CopieChaine
+Debut
+	Avec :
+		src : Chaine
+		dst : Chaine
+		Procedure copieChaine(src : Chaine , dst : Chaine )
+
+	Afficher "Copie de d'une chaine dans une autre"
+	
+	Afficher "Saisir chaine : "
+	Saisir src 
+	
+	copier(src, dst)
+	
+	Afficher "Chaine saisie : ", src, "Chaine copiee :", dst
+Fin

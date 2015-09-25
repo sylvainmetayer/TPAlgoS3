@@ -1,0 +1,29 @@
+Programme Principal 
+Debut 
+	Avec : 
+		i : Entier
+		j : Entier
+		p1 : Pointeur Entier 
+		p2 : Pointeur Entier 
+		
+	i <- 2
+	j <- 5
+	p1 <- Adresse i
+	
+	Afficher "Contenu de p1 vaut ", Contenu p1
+	
+	i <- i + 1
+	
+	Afficher "Contenu de p1 vaut ", Contenu p1
+	
+	p2 <- p1
+	Contenu p2 <- ( Contenu p1) +j
+	
+	Afficher "P1 vaut ", Contenu p1," p2 vaut ", Contenu p2," i vaut ",i," et j vaut ", j
+	
+	p1 <- Adresse j
+	Contenu p1 <- i + j
+	
+	Afficher "P1 vaut ", Contenu p1," p2 vaut ", Contenu p2," i vaut ",i," et j vaut ", j
+
+Fin 
