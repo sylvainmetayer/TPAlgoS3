@@ -1,0 +1,57 @@
+Procedure triRapide(t[] : Entier, l : Entier, h : Entier ; t[] : Entier )
+Debut
+
+	Avec : 
+		Procedure echanger (t[] : Entier, i : Entier, j : Entier ; t[] : Entier )
+		i : Entier
+		j : Entier
+		pivot : Entier
+		
+		i <- l 
+		j <- h
+		
+		pivot <- Contenu( t + (l+h)/2)
+		
+		Tant que i < j Faire
+		
+			Tant que Contenu( t+i ) < pivot Faire
+				i <- i+1
+			Fin Faire
+			
+			Tant que Contenu( t+j ) > pivot Faire
+				j <- j-1
+			Fin Faire
+			
+			Si i <= j Alors
+				echanger(t,i,j;t)
+				i <- i+1
+				j <- j-1
+			Finsi
+			
+		Fin Faire
+		
+		Si i < h Alors
+			triRapide(t,i,h;t)
+		Finsi
+		
+		Si j > l Alors
+			triRapide(t,l,j;t)
+		Finsi
+Fin
+
+Procedure echanger (t[] : Entier, i : Entier, j : Entier ; t[] : Entier )
+Debut
+
+	Avec :
+		tmp : Entier
+		
+	tmp <- Contenu( tab + i)
+	Contenu (tab + i) <- Contenu( tab + j )
+	Contenu (tab + j) <- tmp
+	
+Fin
+
+Programme TriRapide
+Debut
+
+Fin 

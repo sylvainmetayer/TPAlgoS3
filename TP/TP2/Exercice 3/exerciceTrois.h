@@ -20,4 +20,21 @@ Retourne un entier qui est compris entre borneMini (exclus) et borneMaxi (exclus
 */
 int controleSaisieEntiere(char *message, int borneMini, int borneMaxi);
 
+/*
+Cette procédure permet de trier rapidement un tableau d'entiers
+Paramètres :
+	tableau : le tableau d'entiers
+	left : la borne inférieure
+	right : la borne supérieure
+*/
+void quickSort(int tab[], int left, int right);
+
+/*
+Procedure permettant d'échanger deux entiers dans un tableau
+Paramètres : 
+	tableau : le tableau d'entiers
+	i : le premier nombre à échanger
+	j : le deuxième nombre à échanger
+*/
+void echanger(int tab[], int i, int j);
 #endif
