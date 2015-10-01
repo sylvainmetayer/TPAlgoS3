@@ -7,17 +7,17 @@ using namespace std;
 
 int main()
 {
-	double elapsedTime;
-	clock_t stopTime;
-	clock_t startTime = clock();
-	int tab[150001];
+	int tab[50];
 
-	for (int i = 0; i < 150000; i++) {
-		int random = rand() % 100000 + 1;
+	for (int i = 0; i < 50; i++) {
+		int random = rand() % 50 + 1;
 		tab[i] = random;
 	}
-	quickSort(tab, 0, 150000);
-	stopTime = clock();
-	elapsedTime = (stopTime - startTime) / (CLOCKS_PER_SEC / (double) 1000.0);
-	cout << "Temps : " << elapsedTime << endl;
+	quickSort(tab, 0, 49);
+
+	for (int i = 0; i < 50; i++)
+	{
+		cout << tab[i] << endl;
+	}
 }
+

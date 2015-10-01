@@ -53,5 +53,21 @@ Fin
 
 Programme TriRapide
 Debut
+	Avec :
+		tab : Entier [50]
+		random : Entier
+		quickSort(tab : Entier , left : Entier, right : Entier ; tab : Entier ) Retourne Entier []
+
+	Pour i Allant De 0 A 50 Faire 
+		random <- nombre aléatoire
+		tab[i] <- random;
+	Fin Faire
+	
+	quickSort(tab, 0, 49)
+
+	Pour i Allant De 0 A 50 Faire 
+		
+		Afficher tab[i]
+	Fin faire
 
 Fin 
