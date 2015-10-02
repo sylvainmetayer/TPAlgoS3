@@ -39,3 +39,34 @@ Element getTete(FileAttente f)
 {
 	return (*f.tete).numero;
 }
+
+void retirerTete(FileAttente& f)
+{
+	Maillon *tmp;
+
+	tmp = f.tete;
+	f.tete = (*f.tete).suivant;
+	delete tmp;
+}
+
+int longueur(const FileAttente f)
+{
+
+	Maillon *p;
+	int compteur =0;
+
+	p = f.tete;
+
+	while (p != NULL)
+	{
+		p = (*p).suivant;
+		compteur++;
+	}
+
+	return compteur;
+}
+
+bool estVide(FileAttente f)
+{
+	return f.tete == NULL;
+}
