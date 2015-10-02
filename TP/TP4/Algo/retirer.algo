@@ -1,0 +1,11 @@
+Procédure retirerTete(f : FileAttente ; f : FileAttente)
+Debut 
+
+	Avec :
+		tmp : Pointeur Maillon
+		
+	tmp <- (Contenu f).tete
+	(Contenu f).tete <- (Contenu f).suiv
+	Detruire tmp
+	
+Fin 
