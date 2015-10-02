@@ -1,0 +1,79 @@
+Module FileAttente {
+
+	Type Element : Entier
+	
+	Type Maillon = {
+		numero : Element
+		suivant : Pointeur Maillon
+	}
+	
+	Type FileAttente = {
+		tete : Pointeur Maillon 
+		queue : Pointeur Maillon
+	}
+
+	/*
+	Cette procédure permet d'initialiser une file. 
+	Paramètre de sortie : 
+		f : la file d'attente initialisée
+	Post-condition : 
+		estVide(f)
+	*/
+	Procédure init(; f : FileAttente)
+	
+	/*
+	Permet de désinitialiser une file. 
+	Paramètres : 
+		f : la file à désinitialiser
+	Post-condition :
+		estVide(f)
+	*/
+	Procédure desinit(f : FileAttente ; f : FileAttente)
+	
+	/*
+	Permet d'ajouter une personne dans la file d'attente
+	Paramètre :
+		f : la file d'attente
+		e : l'element à ajouter
+	Post-condition : 
+		longueur(ajoutQueue(f,e)) = longueur(f)+1
+	*/
+	Procédure ajoutQueue(f : FileAttente, e : Element ; f: FileAttente)
+	
+	/*
+	Permet de retirer la personne en tete
+	Paramètre :
+		f : FileAttente
+	Pré-condition : 
+		non(estVide(f))
+	Post-condition :
+		longueur(retirerTete(f)) = longueur(f)-1
+	*/
+	Procédure retirerTete(f : FileAttente ; f : FileAttente)
+	
+	/*
+	Fonction qui retourne l'element en tete de file
+	Paramètre
+		f : la file d'attente
+	Pré-condition : 
+		non(estVide(f))
+	Retourne un Element
+	*/
+	Fonction getTete(f : FileAttente) Retourne Element
+	
+	/*
+	Fonction qui retourne la longueur de la file
+	Paramètre : 
+		f : FileAttente
+	Retourne la longueur de la file d'attente, ou 0 si vide.
+	*/
+	Fonction longueur(f : FileAttente) Retourne Entier
+	
+	/*
+	Fonction qui retourne l'état de la file
+	Paramètre :
+		f : la file d'attente
+	Retourne vrai si la file est vide, faux sinon
+	*/
+	Fonction estVide(f : FileAttente) Retourne Booleen
+}
