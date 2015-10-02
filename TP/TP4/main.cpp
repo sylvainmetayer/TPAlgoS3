@@ -28,14 +28,22 @@ int main(void)
 			cout << "Personne ajoutee" << endl;
 			break;
 		case 2: //RETIRER
-			//retirerTete(f);
+			retirerTete(f);
 			cout << "Personne retiree" << endl;
 			break;
 		case 3: //CONSULTER
-			cout << "Personne en tete de file : " << getTete(f) << endl;
+			if (estVide(f))
+			{
+				cout << "Il n'y a personne dans la file" << endl;
+			}
+			else
+			{
+				cout << "Personne en tete de file : " << getTete(f) << endl;
+			}
+			
 			break;
 		case 4: //LONGUEUR
-			//cout << "Il y a " << longueur(f) << " personne(s) dans la file" << endl;
+			cout << "Il y a " << longueur(f) << " personne(s) dans la file" << endl;
 			break;
 		case 5: //QUITTER
 			cout << "Sortie de l'application." << endl;

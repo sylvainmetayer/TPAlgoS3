@@ -2,9 +2,10 @@
 #define FILEATTENTE_H
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-typedef int Element;
+typedef string Element;
 
 typedef struct Maillon {
 	Element numero;
