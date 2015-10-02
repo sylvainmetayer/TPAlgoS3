@@ -1,0 +1,9 @@
+Procédure init(; f : FileAttente)
+Debut 
+	Avec :
+	
+	Detruire (Contenu f).queue
+	Detruire (Contenu f).tete
+	(Contenu f).queue <- NULL
+	(Contenu f).tete <- NULL
+Fin 

@@ -2,7 +2,6 @@
 #define FILEATTENTE_H
 
 #include <iostream>
-#include <stdio.h> //pour les char, car on ne doit pas utiliser de string
 using namespace std;
 
 typedef int Element;

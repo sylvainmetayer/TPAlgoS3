@@ -1,0 +1,6 @@
+Procédure init(; f : FileAttente)
+Debut 
+	Avec :
+	(Contenu f).queue <- NULL
+	(Contenu f).tete <- NULL
+Fin 
