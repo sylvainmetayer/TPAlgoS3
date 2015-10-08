@@ -20,7 +20,7 @@ Debut
 		
 		Selon choix Faire
 			Cas 1 :
-				Afficher "Saisir la valeur de l'element :"
+				Afficher "Saisir le nom de la personne :"
 				Saisir ajout
 				ajoutQueue(f, ajout ; f )
 				Afficher "Personne ajoutee"
@@ -29,7 +29,7 @@ Debut
 					Afficher "Il n'y a personne dans la file"
 				Sinon 
 					retirerTete(f ; f )
-					Afficher "Personne retiree" 			
+					Afficher "Personne retiree"	
 				Fin Si 
 			Cas 3 :
 				Si estVide(f) Alors
