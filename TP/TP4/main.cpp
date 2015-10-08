@@ -14,22 +14,29 @@ int main(void)
 		cout << "1- Ajouter une personne en queue" << endl;
 		cout << "2- Retirer la personne en tete " << endl;
 		cout << "3- Consulter la personne en tete de file" << endl;
-		cout << "4- Calculer le longueur de la file d'attente" << endl;
+		cout << "4- Calculer la longueur de la file d'attente" << endl;
 		cout << "5- Quitter" << endl;
 		cout << "Votre choix : ";
 		cin >> choix;
 		
 		switch (choix)
 		{
-		case 1: //AJOUT
-			cout << "Saisir la valeur de l'element :";
+		case 1: //AJOUT		
+			cout << "Saisir le nom de la personne :";
 			cin >> ajout;
 			ajoutQueue(f, ajout);
 			cout << "Personne ajoutee" << endl;
 			break;
 		case 2: //RETIRER
-			retirerTete(f);
-			cout << "Personne retiree" << endl;
+			if (estVide(f))
+			{
+				cout << "Il n'y a personne dans la file" << endl;
+			}
+			else
+			{
+				retirerTete(f);
+				cout << "Personne retiree" << endl;
+			}
 			break;
 		case 3: //CONSULTER
 			if (estVide(f))
