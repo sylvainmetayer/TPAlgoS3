@@ -8,10 +8,59 @@ Procedure desinit(l : Liste ; l : Liste)
 Debut
 	Avec :
 		tmp : Pointeur Maillon
-		Procedure rotation()
+		aDetruire : Pointeur Maillon
+		i : Entier
+		Procedure rotation(p : Pointeur Maillon ; p : Pointeur Maillon )
 	tmp <- l
 	
+	TantQue longueur(l) != 1 Faire 
+		Pour i de 0 A longueur(l)-1 Faire
+			rotation(tmp;tmp)
+		FinFaire
+		/* tmp est sur le dernier element */
+		aDetruire <- tmp
+		tmp <- (Contenu tmp).suivant
+		/*tmp est de retour sur l */
+		Detruire aDetruire
+	FinFaire
+	Detruire l
 Fin 
+
+Fonction longueur(l : Liste) Retourne Entier
+Debut
+	Avec :
+		compteur : Entier
+		tmp : Pointeur Maillon
+	
+	compteur <- 1
+	tmp <- l
+	rotation(tmp;tmp)
+	
+	TantQue l != tmp Faire
+		compteur <- compteur + 1
+		rotation(tmp;tmp)
+	FinFaire
+	
+	Retourne compteur
+Fin
+
+Procedure inserer(l : Liste, e : Element ; l : Liste)
+Debut 
+	Avec :
+		tmp : Pointeur Maillon
+		np : Pointeur Maillon
+		
+	tmp <- l
+	Pour i de 0 A longueur(l)-1 Faire
+		rotation(tmp;tmp)
+	FinFaire
+	/* tmp est sur le dernier element */
+	np <- Nouveau Pointeur Maillon
+	(Contenu np).numero <- e
+	(Contenu np).suivant <- l
+	(Contenu tmp).suivant <- np
+	
+Fin
 
 /*
 Procedure qui permet le décalage du pointeur référent d'un.
@@ -20,7 +69,7 @@ Préconditions :
 Post-conditions :
 	
 */
-Procedure rotation(l : Liste; l : Liste)
+Procedure rotation(p : Pointeur Maillon ; p : Pointeur Maillon )
 Debut
 	Avec :
 	l <- (Contenu l).suivant
