@@ -1,5 +1,0 @@
-Fonction estVide(f : FileAttente) Retourne Booleen
-Debut
-	
-	Retourne (Contenu f).tete = null)
-Fin 

@@ -18,6 +18,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="liste.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="liste.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3A94861C-B2F8-466D-82AC-8290C74C29CD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
