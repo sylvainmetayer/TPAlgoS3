@@ -23,6 +23,11 @@ int longueur(Liste l)
 	Maillon *tmp;
 	void rotation(Maillon *p);
 
+	if (estVide(l))
+	{
+		return 0;
+	}
+
 	compteur = 1;
 	tmp = l;
 	rotation(tmp);
@@ -61,16 +66,25 @@ void inserer(Liste& l, const Element e)
 {
 	Maillon *tmp;
 	Maillon *np;
-
-	tmp = l;
-	for (int i = 0; i < longueur(l) - 1; i++)
+	if (estVide(l))
 	{
-		rotation(tmp);
+		np = new Maillon;
+		(*np).numero = e;
+		(*np).suivant = np;
+		l = np;
 	}
-	np = new Maillon;
-	(*np).numero = e;
-	(*np).suivant = l;
-	(*tmp).suivant = np;
+	else
+	{
+		tmp = l;
+		for (int i = 1; i < longueur(l) - 1; i++)
+		{
+			rotation(tmp);
+		}
+		np = new Maillon;
+		(*np).numero = e;
+		(*np).suivant = l;
+		(*tmp).suivant = np;
+	}
 }
 
 
@@ -82,12 +96,12 @@ void afficher(Liste l)
 	tmp = l;
 
 	do {
-		cout << (*tmp).numero;
+		cout << (*tmp).numero << endl;
 		rotation(tmp);
 	} while (tmp != l);
 }
 
-void supprimer(Liste l)
+void supprimer(Liste& l)
 {
 	Maillon *tmp;
 	Maillon *aDetruire;
@@ -103,4 +117,8 @@ void supprimer(Liste l)
 	delete aDetruire;
 
 	(*tmp).suivant = l;
+}
+bool estVide(const Liste l)
+{
+	return l == NULL;
 }

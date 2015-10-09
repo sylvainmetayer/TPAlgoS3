@@ -68,5 +68,12 @@ longueur(l) = longueur(l) - 1
 */
 void supprimer(Liste& l);
 
+/*
+Fonction qui permet de savoir si la liste est vide ou non
+Paramètres : 
+	l : la liste
+Retourne vrai si la liste est vide, faux sinon
+*/
+bool estVide(Liste l);
 #endif
 
