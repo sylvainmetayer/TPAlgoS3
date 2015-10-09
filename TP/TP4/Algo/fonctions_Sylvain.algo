@@ -1,0 +1,27 @@
+Procedure init(; l : Liste)
+Debut 
+	Avec :
+	l <- null 
+Fin 
+
+Procedure desinit(l : Liste ; l : Liste)
+Debut
+	Avec :
+		tmp : Pointeur Maillon
+		Procedure rotation()
+	tmp <- l
+	
+Fin 
+
+/*
+Procedure qui permet le décalage du pointeur référent d'un.
+Préconditions : 
+	longueur(l) > 1
+Post-conditions :
+	
+*/
+Procedure rotation(l : Liste; l : Liste)
+Debut
+	Avec :
+	l <- (Contenu l).suivant
+Fin 
