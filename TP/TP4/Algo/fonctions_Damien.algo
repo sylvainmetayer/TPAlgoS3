@@ -1,0 +1,81 @@
+Procédure afficher(l : Liste;)
+Debut 
+	Avec :
+		tmp : Pointeur Maillon
+		Procedure rotation(p : Pointeur Maillon ; p: Pointeur Maillon)
+		
+	tmp <- l
+	
+	Repeter
+	
+		Afficher (Contenu tmp).numero
+		rotation(tmp;tmp)
+	
+	TantQue tmp != l FinFaire 
+
+Fin
+
+Procedure supprimer(l : Liste ; l : Liste)
+Debut
+	Avec :
+		i : Entier
+		tmp : Pointeur Maillon
+		aDetruire : Pointeur Maillon
+	
+	tmp <- l
+	
+	Pour i De 1 A longueur(l;l)-1 Faire
+		tmp <- (Contenu tmp).suivant
+	FinFaire
+	
+	aDetruire <- (Contenu tmp).suivant
+	Detruire aDetruire
+	
+	(Contenu tmp).suivant <- l
+Fin
+
+//PARTIE DAMIEN
+void afficher(Liste l)
+{
+	Maillon *tmp;
+	void rotation(Maillon *p);
+
+	tmp = l;
+
+	do {
+		cout << (*tmp).numero;
+		rotation(tmp);
+	} while (tmp != l);
+}
+
+void supprimer(Liste l)
+{
+	Maillon *tmp;
+	Maillon *aDetruire;
+
+	tmp = l;
+
+	for (int i = 1; i < longueur(l) - 1; i++)
+	{
+		tmp = (*tmp).suivant;
+	}
+
+	aDetruire = (*tmp).suivant;
+	delete aDetruire;
+
+	(*tmp).suivant = l;
+}
+
+#include "liste.h"
+#include <stdio.h>
+
+using namespace std;
+
+int main()
+{
+	int choix;
+
+	cout << " -- Menu principal -- ";
+	cout << "1. Afficher la liste";
+	cout << "2. "
+}
