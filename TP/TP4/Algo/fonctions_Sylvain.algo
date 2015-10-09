@@ -32,6 +32,10 @@ Debut
 		compteur : Entier
 		tmp : Pointeur Maillon
 	
+	Si estVide(l) Alors
+		Retourne 0
+	FinSi
+	
 	compteur <- 1
 	tmp <- l
 	rotation(tmp;tmp)
@@ -50,15 +54,22 @@ Debut
 		tmp : Pointeur Maillon
 		np : Pointeur Maillon
 		
-	tmp <- l
-	Pour i de 0 A longueur(l)-1 Faire
-		rotation(tmp;tmp)
-	FinFaire
-	/* tmp est sur le dernier element */
-	np <- Nouveau Pointeur Maillon
-	(Contenu np).numero <- e
-	(Contenu np).suivant <- l
-	(Contenu tmp).suivant <- np
+	Si estVide(l) Alors
+		np = Nouveau Maillon
+		(Contenu np).numero <- e
+		(Contenu np).suivant <- np
+		l <- np
+	Sinon	
+		tmp <- l
+		Pour i de 1 A longueur(l)-1 Faire
+			rotation(tmp;tmp)
+		FinFaire
+		/* tmp est sur le dernier element */
+		np <- Nouveau Pointeur Maillon
+		(Contenu np).numero <- e
+		(Contenu np).suivant <- l
+		(Contenu tmp).suivant <- np
+	FinSi
 	
 Fin
 
@@ -73,4 +84,55 @@ Procedure rotation(p : Pointeur Maillon ; p : Pointeur Maillon )
 Debut
 	Avec :
 	p <- (Contenu p).suivant
+Fin 
+
+Fonction estVide(l : Liste) Retourne Booleen 
+Debut	
+	Avec :
+	Retourne l = null
+Fin
+
+Programme Principal 
+Debut 
+	Avec :
+		choix : Entier
+		f : Liste
+		ajout : Element
+	
+	init(;l)
+	
+	Repeter
+		Afficher "---Menu---"
+		Afficher "1. Lister les elements présents."
+		Afficher "2- Consulter le nombre d'elements." 
+		Afficher "3- Insérer un element en fin de liste"
+		Afficher "4- Supprimer l'element en fin de liste"
+		Afficher "5- Quitter"
+		Afficher "Votre choix : "
+		
+		Saisir choix
+		
+		Selon choix Faire
+			Cas 1 : //LISTER
+				Afficher "Saisir le nom de la personne :"
+				Saisir ajout
+				ajoutQueue(f, ajout ; f )
+				Afficher "Personne ajoutee"
+			Cas 2 : //LONGUEUR
+				Afficher "Il y a ", longueur(l), " numero(s) dans la liste" 
+			Cas 3 : //INSERER
+				Si estVide(f) Alors
+					Afficher "Il n'y a personne dans la file"
+				Sinon 
+					Afficher "Personne en tete de file : " , getTete(f) 
+				Fin Si 
+			Cas 4 : //SUPPRIMER
+				
+			Cas 5 : //QUITTER
+				Afficher "Sortie de l'application." 
+			Defaut : 
+				Afficher "Erreur !"
+		FinFaire
+	TantQue choix != 5
+
 Fin 
