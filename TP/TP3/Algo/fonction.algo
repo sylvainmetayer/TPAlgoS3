@@ -1,0 +1,214 @@
+/*MAIN*/ 
+Programme Principal
+Debut 
+	Avec :
+		choix : Entier
+		f : FileAttente
+		ajout : Element
+	
+	init(;f)
+	
+	Faire 
+		Afficher "---Menu---"
+		Afficher "1- Ajouter une personne en queue"
+		Afficher "2- Retirer la personne en tete " 
+		Afficher "3- Consulter la personne en tete de file"
+		Afficher "4- Calculer le longueur de la file d'attente"
+		Afficher "5- Quitter"
+		Afficher "Votre choix : "
+		
+		Saisir choix
+		
+		Selon choix Faire
+			Cas 1 :
+				Afficher "Saisir la valeur de l'element :"
+				Saisir ajout
+				ajoutQueue(f, ajout ; f )
+				Afficher "Personne ajoutee"
+			Cas 2 :
+				Si estVide(f) Alors
+					Afficher "Il n'y a personne dans la file"
+				Sinon 
+					retirerTete(f ; f )
+					Afficher "Personne retiree" 			
+				Fin Si 
+			Cas 3 :
+				Si estVide(f) Alors
+					Afficher "Il n'y a personne dans la file"
+				Sinon 
+					Afficher "Personne en tete de file : " , getTete(f) 
+				Fin Si 
+			Cas 4 :
+				Afficher "Il y a ", longueur(f), " personne(s) dans la file" 
+			Cas 5 :
+				Afficher "Sortie de l'application." 
+			Defaut : 
+				Afficher "Erreur !"
+		Fin Faire
+	Tant Que choix != 5
+Fin 
+
+/*MODULE FILEATTENTE*/
+Module FileAttente {
+
+	Type Element : Entier
+	
+	Type Maillon = {
+		numero : Element
+		suivant : Pointeur Maillon
+	}
+	
+	Type FileAttente = {
+		tete : Pointeur Maillon 
+		queue : Pointeur Maillon
+	}
+
+	/*
+	Cette procédure permet d'initialiser une file. 
+	Paramètre de sortie : 
+		f : la file d'attente initialisée
+	Post-condition : 
+		estVide(f)
+	*/
+	Procédure init(; f : FileAttente)
+	
+	/*
+	Permet de désinitialiser une file. 
+	Paramètres : 
+		f : la file à désinitialiser
+	Post-condition :
+		estVide(f)
+	*/
+	Procédure desinit(f : FileAttente ; f : FileAttente)
+	
+	/*
+	Permet d'ajouter une personne dans la file d'attente
+	Paramètre :
+		f : la file d'attente
+		e : l'element à ajouter
+	Post-condition : 
+		longueur(ajoutQueue(f,e)) = longueur(f)+1
+	*/
+	Procédure ajoutQueue(f : FileAttente, e : Element ; f: FileAttente)
+	
+	/*
+	Permet de retirer la personne en tete
+	Paramètre :
+		f : FileAttente
+	Pré-condition : 
+		non(estVide(f))
+	Post-condition :
+		longueur(retirerTete(f)) = longueur(f)-1
+	*/
+	Procédure retirerTete(f : FileAttente ; f : FileAttente)
+	
+	/*
+	Fonction qui retourne l'element en tete de file
+	Paramètre
+		f : la file d'attente
+	Pré-condition : 
+		non(estVide(f))
+	Retourne un Element
+	*/
+	Fonction getTete(f : FileAttente) Retourne Element
+	
+	/*
+	Fonction qui retourne la longueur de la file
+	Paramètre : 
+		f : FileAttente
+	Retourne la longueur de la file d'attente, ou 0 si vide.
+	*/
+	Fonction longueur(f : FileAttente) Retourne Entier
+	
+	/*
+	Fonction qui retourne l'état de la file
+	Paramètre :
+		f : la file d'attente
+	Retourne vrai si la file est vide, faux sinon
+	*/
+	Fonction estVide(f : FileAttente) Retourne Booleen
+}
+
+/*FONCTIONS ASSOCIEES AU MODULE*/
+
+Procédure ajoutQueue(f : FileAttente, e : Element ; f: FileAttente)
+Debut 
+	Avec :
+		np : Pointeur Maillon
+		
+		np <- Nouveau Maillon
+		
+		(Contenu np).numero <- e
+		(Contenu np).suivant <- NULL
+		(Contenu f.queue).suivant <- np
+		(Contenu f.queue) <- np
+Fin 
+
+Procédure init(; f : FileAttente)
+Debut 
+	Avec :
+	
+	Detruire (Contenu f).queue
+	Detruire (Contenu f).tete
+	(Contenu f).queue <- NULL
+	(Contenu f).tete <- NULL
+Fin 
+
+Fonction estVide(f : FileAttente) Retourne Booleen
+Debut
+	
+	Retourne (Contenu f).tete = null)
+Fin 
+
+/*
+Fonction qui retourne l'element en tete de file
+Paramètre
+	f : la file d'attente
+Pré-condition : 
+	non(estVide(f))
+Retourne un Element
+*/
+Fonction getTete(f : FileAttente) Retourne Element
+Debut 
+	Avec :
+	Retourne (Contenu f.tete).numero
+Fin
+
+Procédure init(; f : FileAttente)
+Debut 
+	Avec :
+	(Contenu f).queue <- NULL
+	(Contenu f).tete <- NULL
+Fin 
+
+Fonction longueur(f : FileAttente) Retourne Entier
+Debut
+
+	Avec :
+		p : Pointeur Maillon
+		compteur : Entier
+		
+	p <- (Contenu f).tete
+	
+	Tant que p != null Faire 
+		
+		p <- (Contenu p).suivant
+		compteur <- compteur + 1
+	
+	Finfaire
+	
+	Retourne compteur
+
+Fin
+	
+Procédure retirerTete(f : FileAttente ; f : FileAttente)
+Debut 
+
+	Avec :
+		tmp : Pointeur Maillon
+		
+	tmp <- (Contenu f).tete
+	(Contenu f).tete <- (Contenu f).suiv
+	Detruire tmp
+	
+Fin 
