@@ -72,5 +72,5 @@ Post-conditions :
 Procedure rotation(p : Pointeur Maillon ; p : Pointeur Maillon )
 Debut
 	Avec :
-	l <- (Contenu l).suivant
+	p <- (Contenu p).suivant
 Fin 
