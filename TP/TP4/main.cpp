@@ -25,7 +25,7 @@ int main()
 		case 1: //Afficher la liste
 			if (estVide(l))
 			{
-				cout << "La liste est vide.";
+				cout << "La liste est vide." << endl;
 			}
 			else
 			{

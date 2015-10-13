@@ -66,24 +66,30 @@ void inserer(Liste& l, const Element e)
 {
 	Maillon *tmp;
 	Maillon *np;
+
+	np = new Maillon;
+	tmp = new Maillon;
+	tmp = l;
+
+	(*np).numero = e;
+	(*np).suivant = l;
+
 	if (estVide(l))
 	{
-		np = new Maillon;
-		(*np).numero = e;
+		//premier element ajouté
 		(*np).suivant = np;
 		l = np;
 	}
 	else
 	{
-		tmp = l;
-		for (int i = 1; i < longueur(l) - 1; i++)
+		do
 		{
 			rotation(tmp);
-		}
-		np = new Maillon;
-		(*np).numero = e;
-		(*np).suivant = l;
+		} while ((*tmp).suivant != l); //tant qu'on est pas sur le dernier
+
 		(*tmp).suivant = np;
+		(*np).suivant = l;
+		l = tmp;
 	}
 }
 
