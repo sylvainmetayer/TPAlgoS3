@@ -7,9 +7,9 @@ longueur(l) > 1
 Post-conditions :
 
 */
-void rotation(Maillon *p)
+void rotation(Maillon **p)
 {
-	p = (*p).suivant;
+	(*p) = (*p)->suivant;
 }
 
 void init(Liste& l)
@@ -21,7 +21,7 @@ int longueur(Liste l)
 {
 	int compteur;
 	Maillon *tmp;
-	void rotation(Maillon *p);
+	void rotation(Maillon **p);
 
 	if (estVide(l))
 	{
@@ -30,12 +30,12 @@ int longueur(Liste l)
 
 	compteur = 1;
 	tmp = l;
-	rotation(tmp);
+	rotation(&tmp);
 
 	while (l != tmp)
 	{
 		compteur++;
-		rotation(tmp);
+		rotation(&tmp);
 	}
 
 	return compteur;
@@ -45,14 +45,14 @@ void desinit(Liste& l)
 {
 	Maillon *tmp;
 	Maillon *aDetruire;
-	void rotation(Maillon *p);
+	void rotation(Maillon **p);
 
 	tmp = l;
 	while (longueur(l) != 1)
 	{
 		for (int i = 0; i < longueur(l) - 1; i++)
 		{
-			rotation(tmp);
+			rotation(&tmp);
 		}
 
 		aDetruire = tmp;
@@ -69,12 +69,12 @@ void inserer(Liste& l, const Element e)
 
 	np = new Maillon;
 	tmp = new Maillon;
-	tmp = l;
+	
 
 	(*np).numero = e;
-	(*np).suivant = l;
+	//(*np).suivant = l;
 
-	if (estVide(l))
+	if (l == nullptr )
 	{
 		//premier element ajouté
 		(*np).suivant = np;
@@ -82,14 +82,16 @@ void inserer(Liste& l, const Element e)
 	}
 	else
 	{
-		do
+		tmp = (*l).suivant;
+		while ((*tmp).suivant != l)
 		{
-			rotation(tmp);
-		} while ((*tmp).suivant != l); //tant qu'on est pas sur le dernier
+			cout << "toto" << endl;
+			tmp = (*tmp).suivant;
+		} //tant qu'on est pas sur le dernier
 
 		(*tmp).suivant = np;
 		(*np).suivant = l;
-		l = tmp;
+		l = np;
 	}
 }
 
@@ -103,7 +105,7 @@ void afficher(Liste l)
 
 	do {
 		cout << (*tmp).numero << endl;
-		rotation(tmp);
+		rotation(&tmp);
 	} while (tmp != l);
 }
 
