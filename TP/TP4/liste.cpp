@@ -112,19 +112,26 @@ void afficher(Liste l)
 void supprimer(Liste& l)
 {
 	Maillon *tmp;
-	Maillon *aDetruire;
-
-	tmp = l;
-
-	for (int i = 1; i < longueur(l) - 1; i++)
+	Maillon *newQueue;
+	if (longueur(l) == 1)
 	{
-		tmp = (*tmp).suivant;
+		tmp = l;
+		delete tmp;
+		init(l);
 	}
-
-	aDetruire = (*tmp).suivant;
-	delete aDetruire;
-
-	(*tmp).suivant = l;
+	else
+	{
+		newQueue = (*l).suivant;
+		tmp = l;
+		for (int i = 1; i < longueur(l); i++)
+		{
+			tmp = (*tmp).suivant;
+		}
+		(*tmp).suivant = newQueue;
+		delete l;
+		l = newQueue;
+		cout << (*tmp).numero;
+	}
 }
 bool estVide(const Liste l)
 {

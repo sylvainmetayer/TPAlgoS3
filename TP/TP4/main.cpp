@@ -37,11 +37,23 @@ int main()
 			cout << longueur(l) << endl;
 			break;
 
-		case 3:
+		case 3: //Insertion
 			cout << "Entrez l'element a inserer : ";
 			cin >> element;
 			inserer(l, element);
 			cout << "Element insere !" << endl;
+			break;
+
+		case 4: //Suppression
+			if (estVide(l))
+			{
+				cout << "La liste est vide." << endl;
+			}
+			else
+			{
+				supprimer(l);
+				cout << "Element en queue supprime.";
+			}
 			break;
 		}
 	} while (choix != 5);
