@@ -52,7 +52,7 @@ int main()
 			else
 			{
 				supprimer(l);
-				cout << "Element en queue supprime.";
+				cout << "Element en queue supprime." << endl;
 			}
 			break;
 		}

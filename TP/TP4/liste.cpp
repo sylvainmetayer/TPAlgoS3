@@ -130,7 +130,6 @@ void supprimer(Liste& l)
 		(*tmp).suivant = newQueue;
 		delete l;
 		l = newQueue;
-		cout << (*tmp).numero;
 	}
 }
 bool estVide(const Liste l)

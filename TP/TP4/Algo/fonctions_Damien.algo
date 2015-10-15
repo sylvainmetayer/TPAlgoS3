@@ -20,17 +20,24 @@ Debut
 	Avec :
 		i : Entier
 		tmp : Pointeur Maillon
-		aDetruire : Pointeur Maillon
+		newQueue : Pointeur Maillon
 	
-	tmp <- l
+	Si longueur(l) = 1 Alors
 	
-	Pour i De 1 A longueur(l;l)-1 Faire
-		tmp <- (Contenu tmp).suivant
-	FinFaire
+		tmp <- l
+		Detruire tmp
+		init(l)
 	
-	aDetruire <- (Contenu tmp).suivant
-	Detruire aDetruire
-	
-	(Contenu tmp).suivant <- l
+	Sinon
+		newQueue = (Contenu l).suivant
+		tmp <- l
+		Pour i De 1 A longueur(l;l) Faire
+			tmp <- (Contenu tmp).suivant
+		FinFaire
+		
+		(Contenu tmp).suivant <- newQueue
+		Detruire l
+		l <- newQueue
+	FinSi
 Fin
 
