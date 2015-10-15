@@ -1,0 +1,290 @@
+/* MODULE LISTE */
+Module Liste {
+
+	Type Element : Entier
+	
+	Type Maillon = {
+		numero : Element
+		suivant : Pointeur Maillon
+	}
+	
+	Type Liste : Pointeur Maillon
+
+	/*
+	Cette procédure permet d'initialiser une liste.
+	Paramètre de sortie : 
+		l : la liste initialisée
+	Post-condition : 
+		estVide(l)
+	*/
+	Procédure init(; l : Liste)
+	
+	/*
+	Permet de désinitialiser une liste.
+	Paramètres : 
+		l : la liste à désinitialiser
+	Post-condition :
+		estVide(l)
+	*/
+	Procédure desinit(l : Liste ; l : Liste)
+	
+	
+	/*
+	Procédure qui permet d'afficher la liste.
+	Paramètre :
+		l : la liste à afficher
+	Pré-condition : 
+		non(estVide(l))
+	*/
+	Procédure afficher(l : Liste;)
+	
+	/*
+	Fonction qui retourne la longueur de la liste.
+	Paramètre : 
+		l : la liste.
+	Retourne la longueur de la liste.
+	*/
+	Fonction longueur(l : liste) Retourne Entier
+	
+	/*
+	Fonction qui retourne la longueur de la liste calculée de facon recursive
+	Paramètre : 
+		l : la liste.
+		m : le maillon a comparer a l.
+	Retourne la longueur de la liste.
+	*/	
+	Fonction longueurRecursive(l : Liste, maillon : Pointeur Maillon) Retourne Entier
+	
+	/*
+	Procédure permettant d'inserer un element en "debut" de liste. 
+	Paramètre : 
+		l : la liste
+		e : l'element à ajouter
+	Post-condition : 
+		longueur(l) = longueur(l) + 1
+	*/
+	Procédure inserer(l : Liste, e : Element ; l : Liste)
+	
+	/*
+	Procédure permettant de supprimer le "dernier" element de la liste
+	Paramètre :
+		l : la liste
+	Post-condition :
+		longueur(l) = longueur(l) - 1
+	*/
+	Procédure supprimer(l : Liste ; l : Liste)
+	
+	/*
+	Fonction qui permet de savoir si la liste est vide ou non.
+	Paramètre : 
+		l : la liste
+	Retourne vrai si la liste est vide, faux sinon
+	*/
+	Fonction estVide(l : Liste) Retourne Booleen 
+}
+
+/* PROGRAMME PRINCIPAL */
+
+Programme Principal 
+Debut 
+	Avec :
+		choix : Entier
+		l : Liste
+		ajout : Element
+	
+	init(;l)
+	
+	Repeter
+		Afficher "---Menu---"
+		Afficher "1. Lister les elements présents."
+		Afficher "2- Consulter le nombre d'elements." 
+		Afficher "3- Insérer un element en fin de liste"
+		Afficher "4- Supprimer l'element en fin de liste"
+		Afficher "5- Quitter"
+		Afficher "Votre choix : "
+		
+		Saisir choix
+		
+		Selon choix Faire
+			Cas 1 : //LISTER
+				Si estVide(l) Alors
+					Afficher "La liste est vide"
+				Sinon
+					afficher(l)
+				FinSi
+			Cas 2 : //LONGUEUR
+				Afficher longueur(l)
+				Afficher longueurRecursive(l, (Contenu l).suivant)
+			Cas 3 : //INSERER
+				Afficher "Entrez l'element a inserer :"
+				Saisir element
+				inserer(l , element ; l)
+				Afficher "Element inseré !"
+			Cas 4 : //SUPPRIMER
+				Si estVide(l) Alors
+					Afficher "La liste est vide"
+				Sinon
+					supprimer(l)
+					Afficher "Element en queue supprime."
+				FinSi
+			Defaut : 
+				Afficher "Erreur, merci de recommencer votre saisie"
+		FinFaire
+	TantQue choix != 5
+Fin 
+
+/* IMPLEMENTATION DES PROCEDURE ET FONCTIONS DU MODULE LISTE */
+
+Procedure init(; l : Liste)
+Debut 
+	Avec :
+	l <- null 
+Fin 
+
+Procedure desinit(l : Liste ; l : Liste)
+Debut
+	Avec :
+		tmp : Pointeur Maillon
+		aDetruire : Pointeur Maillon
+		i : Entier
+		Procedure rotation(p : Pointeur Maillon ; p : Pointeur Maillon )
+		
+	tmp <- l
+	
+	TantQue longueur(l) != 1 Faire 
+		Pour i de 0 A longueur(l)-1 Faire
+			rotation(tmp;tmp)
+		FinFaire
+		/* tmp est sur le dernier element */
+		aDetruire <- tmp
+		tmp <- (Contenu tmp).suivant
+		/*tmp est de retour sur l */
+		Detruire aDetruire
+	FinFaire
+	Detruire l
+Fin 
+
+Fonction longueur(l : Liste) Retourne Entier
+Debut
+	Avec :
+		compteur : Entier
+		tmp : Pointeur Maillon
+	
+	Si estVide(l) Alors
+		Retourne 0
+	FinSi
+	
+	compteur <- 1
+	tmp <- l
+	rotation(tmp;tmp)
+	
+	TantQue l != tmp Faire
+		compteur <- compteur + 1
+		rotation(tmp;tmp)
+	FinFaire
+	
+	Retourne compteur
+Fin
+
+Fonction longueurRecursive(l : Liste, maillon : Pointeur Maillon) Retourne Entier
+Debut
+	Avec :
+	
+	Si maillon = l Alors 
+		Retourne 1
+	Sinon
+		Retourne 1 + longueurRecursive(l, (Contenu maillon).suivant)
+	FinSi
+Fin
+
+Procedure inserer(l : Liste, e : Element ; l : Liste)
+Debut 
+	Avec :
+		tmp : Pointeur Maillon
+		np : Pointeur Maillon
+		
+	np <- Nouveau Maillon
+	tmp <- Nouveau Maillon
+	
+	(Contenu np).numero <- e
+	
+	Si estVide(l) Alors
+		(Contenu np).suivant <- np
+		l <- np
+	Sinon	
+		tmp <- (Contenu l).suivant
+		TantQue (Contenu tmp).suivant != l Faire
+			tmp <- (Contenu tmp).suivant
+		
+		Pour i de 1 A longueur(l)-1 Faire
+			rotation(tmp;tmp)
+		FinFaire
+		/* tmp est sur le dernier element */
+		(Contenu tmp).suivant <- np
+		(Contenu np).suivant <- l
+		l <- np
+	FinSi
+	
+Fin
+
+/*
+Procedure qui permet le décalage du pointeur référent d'un.
+Préconditions : 
+	longueur(l) > 1
+Post-conditions :
+	
+*/
+Procedure rotation(p : Pointeur Maillon ; p : Pointeur Maillon )
+Debut
+	Avec :
+	p <- (Contenu p).suivant
+Fin 
+
+Fonction estVide(l : Liste) Retourne Booleen 
+Debut	
+	Avec :
+	Retourne l = null
+Fin
+
+Procédure afficher(l : Liste;)
+Debut 
+	Avec :
+		tmp : Pointeur Maillon
+		Procedure rotation(p : Pointeur Maillon ; p: Pointeur Maillon)
+		
+	tmp <- l
+	
+	Repeter
+	
+		Afficher (Contenu tmp).numero
+		rotation(tmp;tmp)
+	
+	TantQue tmp != l FinFaire 
+
+Fin
+
+Procedure supprimer(l : Liste ; l : Liste)
+Debut
+	Avec :
+		i : Entier
+		tmp : Pointeur Maillon
+		newQueue : Pointeur Maillon
+	
+	Si longueur(l) = 1 Alors
+	
+		tmp <- l
+		Detruire tmp
+		init(l)
+	
+	Sinon
+		newQueue = (Contenu l).suivant
+		tmp <- l
+		Pour i De 1 A longueur(l;l) Faire
+			tmp <- (Contenu tmp).suivant
+		FinFaire
+		
+		(Contenu tmp).suivant <- newQueue
+		Detruire l
+		l <- newQueue
+	FinSi
+Fin
