@@ -50,7 +50,16 @@ Retourne la longueur de la liste.
 int longueur(Liste l);
 
 /*
-Procédure permettant d'inserer un element en "fin" de liste.
+Fonction qui retourne la longueur de la liste calculée de facon recursive
+Paramètre :
+l : la liste.
+m : le maillon a comparer a l.
+Retourne la longueur de la liste.
+*/
+int longueurRecursive(Liste l, Maillon *maillon);
+
+/*
+Procédure permettant d'inserer un element en "debut" de liste.
 Paramètre :
 l : la liste
 e : l'element à ajouter

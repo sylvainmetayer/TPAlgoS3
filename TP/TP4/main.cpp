@@ -35,6 +35,7 @@ int main()
 
 		case 2 : //Afficher longueur
 			cout << longueur(l) << endl;
+			cout << "Longueur calculee de facon recursive :" << longueurRecursive(l, (*l).suivant) << endl;
 			break;
 
 		case 3: //Insertion
@@ -55,6 +56,8 @@ int main()
 				cout << "Element en queue supprime." << endl;
 			}
 			break;
+		default:
+			cout << "Erreur, merci de recommencer votre saisie" << endl;
 		}
 	} while (choix != 5);
 }

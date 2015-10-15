@@ -41,6 +41,15 @@ int longueur(Liste l)
 	return compteur;
 }
 
+int longueurRecursive(Liste l, Maillon *maillon) {
+	if (maillon == l ) {
+		return 1;
+	}
+	else {
+		return 1 + longueurRecursive(l, (*maillon).suivant);
+	}
+}
+
 void desinit(Liste& l)
 {
 	Maillon *tmp;
@@ -74,7 +83,7 @@ void inserer(Liste& l, const Element e)
 	(*np).numero = e;
 	//(*np).suivant = l;
 
-	if (l == nullptr )
+	if (estVide(l) )
 	{
 		//premier element ajouté
 		(*np).suivant = np;
@@ -85,8 +94,7 @@ void inserer(Liste& l, const Element e)
 		tmp = (*l).suivant;
 		while ((*tmp).suivant != l)
 		{
-			cout << "toto" << endl;
-			tmp = (*tmp).suivant;
+			rotation(&tmp);
 		} //tant qu'on est pas sur le dernier
 
 		(*tmp).suivant = np;

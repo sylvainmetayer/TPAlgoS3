@@ -11,6 +11,7 @@ Debut
 		aDetruire : Pointeur Maillon
 		i : Entier
 		Procedure rotation(p : Pointeur Maillon ; p : Pointeur Maillon )
+		
 	tmp <- l
 	
 	TantQue longueur(l) != 1 Faire 
@@ -48,27 +49,43 @@ Debut
 	Retourne compteur
 Fin
 
+Fonction longueurRecursive(l : Liste, maillon : Pointeur Maillon) Retourne Entier
+Debut
+	Avec :
+	
+	Si maillon = l Alors 
+		Retourne 1
+	Sinon
+		Retourne 1 + longueurRecursive(l, (Contenu maillon).suivant)
+	FinSi
+Fin
+
 Procedure inserer(l : Liste, e : Element ; l : Liste)
 Debut 
 	Avec :
 		tmp : Pointeur Maillon
 		np : Pointeur Maillon
 		
+	np <- Nouveau Maillon
+	tmp <- Nouveau Maillon
+	
+	(Contenu np).numero <- e
+	
 	Si estVide(l) Alors
-		np = Nouveau Maillon
-		(Contenu np).numero <- e
 		(Contenu np).suivant <- np
 		l <- np
 	Sinon	
-		tmp <- l
+		tmp <- (Contenu l).suivant
+		TantQue (Contenu tmp).suivant != l Faire
+			tmp <- (Contenu tmp).suivant
+		
 		Pour i de 1 A longueur(l)-1 Faire
 			rotation(tmp;tmp)
 		FinFaire
 		/* tmp est sur le dernier element */
-		np <- Nouveau Pointeur Maillon
-		(Contenu np).numero <- e
-		(Contenu np).suivant <- l
 		(Contenu tmp).suivant <- np
+		(Contenu np).suivant <- l
+		l <- np
 	FinSi
 	
 Fin
@@ -96,7 +113,7 @@ Programme Principal
 Debut 
 	Avec :
 		choix : Entier
-		f : Liste
+		l : Liste
 		ajout : Element
 	
 	init(;l)
@@ -114,25 +131,28 @@ Debut
 		
 		Selon choix Faire
 			Cas 1 : //LISTER
-				Afficher "Saisir le nom de la personne :"
-				Saisir ajout
-				ajoutQueue(f, ajout ; f )
-				Afficher "Personne ajoutee"
+				Si estVide(l) Alors
+					Afficher "La liste est vide"
+				Sinon
+					afficher(l)
+				FinSi
 			Cas 2 : //LONGUEUR
-				Afficher "Il y a ", longueur(l), " numero(s) dans la liste" 
+				Afficher longueur(l)
+				Afficher longueurRecursive(l, (Contenu l).suivant)
 			Cas 3 : //INSERER
-				Si estVide(f) Alors
-					Afficher "Il n'y a personne dans la file"
-				Sinon 
-					Afficher "Personne en tete de file : " , getTete(f) 
-				Fin Si 
+				Afficher "Entrez l'element a inserer :"
+				Saisir element
+				inserer(l , element ; l)
+				Afficher "Element inseré !"
 			Cas 4 : //SUPPRIMER
-				
-			Cas 5 : //QUITTER
-				Afficher "Sortie de l'application." 
+				Si estVide(l) Alors
+					Afficher "La liste est vide"
+				Sinon
+					supprimer(l)
+					Afficher "Element en queue supprime."
+				FinSi
 			Defaut : 
-				Afficher "Erreur !"
+				Afficher "Erreur, merci de recommencer votre saisie"
 		FinFaire
 	TantQue choix != 5
-
 Fin 
