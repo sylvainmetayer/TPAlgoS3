@@ -190,6 +190,9 @@ Fonction longueurRecursive(l : Liste, maillon : Pointeur Maillon) Retourne Entie
 Debut
 	Avec :
 	
+	Si l = NULL Alors 
+		Retourne 0
+	FinSi
 	Si maillon = l Alors 
 		Retourne 1
 	Sinon

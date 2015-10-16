@@ -42,6 +42,10 @@ int longueur(Liste l)
 }
 
 int longueurRecursive(Liste l, Maillon *maillon) {
+	if (l == NULL) {
+		return 0;
+	}
+	
 	if (maillon == l ) {
 		return 1;
 	}
