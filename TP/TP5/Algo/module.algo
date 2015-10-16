@@ -1,0 +1,120 @@
+Module Abin (
+	
+	
+	Type Element : Entier
+	
+	Type Noeud = {
+		etiquette : Element
+		ag : Pointeur Noeud
+		ad : Pointeur Noeud
+	}
+	
+	Type Abin = Pointeur Noeud
+	
+	/* 
+	Fonction qui permet d'initaliser l'arbre 
+	Retourne un arbre initialisé
+	*/
+	Fonction init() Retourne Abin
+	
+	/* 
+	Procédure qui permet de désinitialiser un arbre
+	Parametres : 
+		a : Abin à désinitialiser
+	Post-conditions : 
+		estVide(a)
+	*/
+	Procédure desinit(a : Abin ; a : Abin)
+	
+	/* 
+	Fonction qui retourne un booleen selon que l'arbre est vide ou non
+	Parametres : 
+		a : l'arbre
+	Retourne vrai si l'arbre est vide, faux sinon.
+	*/
+	Fonction estVide(a : Abin) Retourne Booleen
+	
+	/*
+	Fonction qui retourne le sous-arbre gauche d'un arbre
+	Parametres : 
+		a : l'arbre
+	Pré-conditions : 
+		non(estVide(a))
+	Retourne l'ag de a
+	*/
+	Fonction gauche(a : Abin) Retourne Abin
+	
+	/*
+	Fonction qui retourne le sous-arbre droit d'un arbre
+	Parametres :
+		a : l'arbre
+	Pré-conditions : 
+		non(estVide(a))
+	Retourne l'ad de a
+	*/
+	Fonction droite(a : Abin) Retourne Abin
+	
+	/* 
+	Fonction qui retourne un arbre dont le sous arbre gauche est ag, et le sous arbre droit est ad
+	Parametres : 
+		e : Element a ajouter
+		ag : sous-arbre gauche a enraciner
+		ad : sous-arbre droit a enraciner
+	Retourne un arbre avec deux sous arbres : ag et ad. 
+	*/
+	Fonction enracine(e : Element, ag : Abin, ad : Abin) Retourne Abin
+	
+	
+	/* 
+	Fonction qui retourne l'etiquette d'un noeud
+	Parametres : 
+		a : Abin dont on veut connaitre la racine
+	Retourne un element
+	*/
+	Fonction racine(a : Abin) Retourne Element
+	
+	/*
+	Fonction qui retourne la hauteur d'un arbre
+	Parametres :
+		a : l'arbre dont on veut connaitre la hauteur
+	Retourne un entier correspondant à la hauteur de l'arbre
+	*/
+	Fonction hauteur(a : Abin) Retourne Entier	
+	
+	/* 
+	Procédure qui affiche l'arbre trié de façon postfixe
+	Parametres : 
+		a : l'arbre
+	Pré-conditions : 
+		non(estVide(a))
+	*/
+	Procédure afficherParcoursPostfixe(a : Abin ;)
+	
+	/* 
+	Procédure qui affiche l'arbre trié de façon préfixe
+	Parametres : 
+		a : l'arbre
+	Pré-conditions : 
+		non(estVide(a))
+	*/
+	Procédure afficherParcoursPrefixe(a : Abin ;)
+		
+		/* 
+	Procédure qui affiche l'arbre trié en largeur
+	Parametres : 
+		a : l'arbre
+	Pré-conditions : 
+		non(estVide(a))
+	*/
+	Procédure afficherParcoursLargeur(a : Abin ;)
+	
+		/* 
+	Procédure qui affiche l'arbre trié de façon infixe
+	Parametres : 
+		a : l'arbre
+	Pré-conditions : 
+		non(estVide(a))
+	*/
+	Procédure afficherParcoursInfixe(a : Abin ; )
+	
+)

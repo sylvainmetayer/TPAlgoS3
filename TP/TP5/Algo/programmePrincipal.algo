@@ -1,0 +1,57 @@
+Procedure menu(;)
+Debut
+	Avec :
+	
+	Afficher "--- Menu ---"
+	Afficher "1- Parcours largeur "
+	Afficher "2- Parcours prefixe"
+	Afficher "3- Parcours infixe"
+	Afficher "4- Parcours postfixe"
+	Afficher "5- Hauteur de l'arbre"
+	Afficher "6- Quitter"
+	Afficher "Votre choix :"
+Fin
+
+Procedure enracinerJeuxDessais(a : Abin ; a : Abin)
+Debut
+	Avec : 
+		ag : Abin
+		ad : Abin
+
+Fin
+
+Avec : 
+	Module Abin
+Programme Principal 
+Debut 
+	Avec : 
+		choix : Entier
+		a : Abin
+		Procedure menu(;)
+		Procedure enracinerJeuxDessais(a : Abin ; a : Abin)
+	
+	a <- init()
+	
+	Repeter 
+		menu(;)
+		Saisir choix
+		Controler choix > 0 ET choix <= 5
+		
+		Selon choix Faire
+			Cas 1 : //Parcours largeur
+				afficherParcoursLargeur(a;)
+			Cas 2 : //Parcours prefixe
+				afficherParcoursPrefixe(a;)
+			Cas 3 : //Parcours infixe
+				afficherParcoursInfixe(a;)
+			Cas 4 : //Parcours postfixe
+				afficherParcoursPostfixe(a;)
+			Cas 5 : //Hauteur de l'arbre
+				Afficher "Hauteur de l'arbre : ", hauteur(a)
+			Defaut : //Quitter
+				Afficher "Au revoir !"
+		FinFaire
+	TantQue choix != 5
+	
+	desinit(a;a)
+Fin 

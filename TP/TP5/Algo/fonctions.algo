@@ -1,0 +1,116 @@
+Fonction init() Retourne Abin
+Debut
+	Avec :
+	
+	Retourne NULL
+Fin
+
+Procédure desinit(a : Abin ; a : Abin)
+Debut
+	Avec :
+	
+	Si non(estVide(a)) Alors
+		desinit(droite(a))
+		desinit(gauche(a))
+		(Contenu a).etiquette <- NULL
+	FinSi
+	Detruire a
+Fin
+
+Fonction estVide(a : Abin) Retourne Booleen
+Debut
+	Avec :
+	Retourne a = NULL
+Fin
+
+Fonction gauche(a : Abin) Retourne Abin
+Debut
+	Avec :
+	
+	Retourne (Contenu a).ag
+Fin
+
+Fonction droite(a : Abin) Retourne Abin
+Debut
+	Avec :
+	
+	Retourne (Contenu a).ad
+Fin
+
+Fonction enracine(e : Element, ag : Abin, ad : Abin) Retourne Abin
+Debut
+	Avec :
+		a : Pointeur Noeud
+		
+		a <- Nouveau Noeud
+		
+		(Contenu a).etiquette <- e
+		(Contenu a).ad <- ad
+		(Contenu a).ag <- ag
+		
+		Retourne a
+Fin
+
+Fonction racine(a : Abin) Retourne Element
+Debut
+	Avec :
+	
+	Retourne (Contenu a).etiquette
+Fin
+
+/* 
+Fonction qui retourne la valeur maximale entre deux entiers
+Parametres : 
+	a : Entier a 
+	b : Entier b
+Retourne a si a > b, b sinon
+*/
+Fonction Maximum(a : Entier, b : Entier) Retourne Entier
+Debut 
+	Avec : 
+	/*Retourne a > b ? a : b GOTO C */
+	Si a > b Alors 
+		Retourne a
+	Sinon
+		Retourne b
+	FinSi
+Fin
+
+Fonction hauteur(a : Abin) Retourne Entier	
+Debut
+	Avec :
+		Fonction Maximum(a : Entier, b : Entier) Retourne Entier
+	
+	Si estVide(a) Alors 
+		Retourne 0
+	Sinon 
+		Retourne 1 + Maximum(hauteur(gauche(a)), hauteur(droite(a)) )
+	
+Fin
+
+Procédure afficherParcoursPostfixe(a : Abin ;)
+Debut
+	Avec :
+	/* TODO */
+	Si a != NULL Alors
+	
+	FinSi
+Fin
+
+Procédure afficherParcoursPrefixe(a : Abin ;)
+Debut
+	Avec :
+	
+Fin
+
+Procédure afficherParcoursLargeur(a : Abin ;)
+Debut
+	Avec :
+	
+Fin
+	
+Procédure afficherParcoursInfixe(a : Abin ; )
+Debut
+	Avec :
+	
+Fin

@@ -1,0 +1,32 @@
+Type Abstrait Abin
+Utilise booleen
+Parametres Element
+Operation 
+	init 		: -> Abin
+	desinit 	: Abin -> (ensemble nul sous word)
+	hauteur 	: Abin -> Entier
+	gauche 		: Abin -> Abin
+	droite 		: Abin -> Abin
+	estVide 	: Abin -> Booleen
+	enracine 	: Element x Abin x Abin -> Abin
+	racine		: Abin -> Element
+
+Pré-conditions 
+	Avec : 
+		a : Abin
+	gauche(a) <=> non(estVide(a))
+	droite(a) <=> non(estVide(a))
+	racine(a) <=> non(estVide(a))
+	
+Axiomes 
+	Avec : 
+		a : Abin 
+		b : Abin
+		e : Element
+		
+	non (estVide(enracine(e,a,b)))
+	gauche(enracine(e,a,b)) = a
+	droite(enracine(e,a,b)) = b
+	hauteur(init()) = 0
+	estVide(init())
+	racine(enracine(e,a,b)) = e
