@@ -56,6 +56,9 @@ int main()
 				cout << "Element en queue supprime." << endl;
 			}
 			break;
+		case 5 : //Quitter
+			cout << "Au revoir.";
+			break;
 		default:
 			cout << "Erreur, merci de recommencer votre saisie" << endl;
 		}
