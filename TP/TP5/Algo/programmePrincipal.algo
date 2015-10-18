@@ -39,19 +39,35 @@ Debut
 		
 		Selon choix Faire
 			Cas 1 : //Parcours largeur
-				afficherParcoursLargeur(a;)
+				Si estVide(a) Alors 
+					Afficher "L'arbre est vide"
+				Sinon
+					afficherParcoursLargeur(a;)
+				FinSi
 			Cas 2 : //Parcours prefixe
-				afficherParcoursPrefixe(a;)
+				Si estVide(a) Alors 
+					Afficher "L'arbre est vide"
+				Sinon
+					afficherParcoursPrefixe(a;)
+				FinSi
 			Cas 3 : //Parcours infixe
-				afficherParcoursInfixe(a;)
+				Si estVide(a) Alors 
+					Afficher "L'arbre est vide"
+				Sinon
+					afficherParcoursInfixe(a;)
+				FinSi
 			Cas 4 : //Parcours postfixe
-				afficherParcoursPostfixe(a;)
+				Si estVide(a) Alors 
+					Afficher "L'arbre est vide"
+				Sinon
+					afficherParcoursPostfixe(a;)
+				FinSi
 			Cas 5 : //Hauteur de l'arbre
 				Afficher "Hauteur de l'arbre : ", hauteur(a)
 			Defaut : //Quitter
 				Afficher "Au revoir !"
 		FinFaire
-	TantQue choix != 5
+	TantQue choix != 6
 	
 	desinit(a;a)
 Fin 

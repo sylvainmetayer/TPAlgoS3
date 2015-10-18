@@ -1,7 +1,6 @@
 Module Abin (
 	
-	
-	Type Element : Entier
+	Type Element : Chaine
 	
 	Type Noeud = {
 		etiquette : Element
