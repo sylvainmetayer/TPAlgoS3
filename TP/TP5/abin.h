@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-typedef char * Element;
+typedef char Element;
 
 typedef struct Noeud {
 	Element etiquette;

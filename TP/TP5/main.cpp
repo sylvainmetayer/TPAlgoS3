@@ -1,5 +1,10 @@
 #include "abin.h"
 
+/*
+Cette procédure permet l'affichage du menu
+Parametre : Aucun
+Pré-conditions : Aucune
+*/
 void menu() 
 {
 	cout << endl << "--- Menu ---" << endl;
@@ -12,23 +17,30 @@ void menu()
 	cout << "Votre choix : ";
 }
 
+
+/*
+Cette fonction permet de générer le jeu d'essais demandé dans le TP
+Parametre : Aucun
+Pré-conditions : Aucune
+Retourne un arbre avec, avec les valeurs demandées dans le TP
+*/
 Abin enracinerJeuxDessais()
 {
 	Abin a;
 	Abin ag;
 	Abin ad;
 
-	ad = enracine("t", init(), init());
-	a = enracine("s", ad, init());
+	ad = enracine('t', init(), init());
+	a = enracine('s', ad, init());
 	ad = a;
-	ag = enracine("v", init(), init());
-	a = enracine("r", ag, ad);
-	ad = enracine("b", init(), init());
-	ag = enracine("q", init(), init());
-	ad = enracine("p", ag, ad);
-	ag = enracine("v", init(), init());
-	ag = enracine("t", ag, ad);
-	a = enracine("a", a, ag);
+	ag = enracine('v', init(), init());
+	a = enracine('r', ag, ad);
+	ad = enracine('b', init(), init());
+	ag = enracine('q', init(), init());
+	ad = enracine('p', ag, ad);
+	ag = enracine('v', init(), init());
+	ag = enracine('t', ag, ad);
+	a = enracine('a', a, ag);
 	return a;
 }
 

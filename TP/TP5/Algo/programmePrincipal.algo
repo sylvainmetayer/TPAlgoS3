@@ -1,3 +1,8 @@
+/* 
+Cette procédure permet l'affichage du menu
+Parametre : Aucun
+Pré-conditions : Aucune
+*/
 Procedure menu(;)
 Debut
 	Avec :
@@ -12,12 +17,31 @@ Debut
 	Afficher "Votre choix :"
 Fin
 
-Procedure enracinerJeuxDessais(a : Abin ; a : Abin)
+/* 
+Cette fonction permet de générer le jeu d'essais demandé dans le TP
+Parametre : Aucun
+Pré-conditions : Aucune
+Retourne un arbre avec les valeurs demandées dans le TP
+*/
+Fonction enracinerJeuxDessais() Retourne Abin
 Debut
 	Avec : 
+		a : Abin
 		ag : Abin
 		ad : Abin
-
+		
+	ad <- enracine('t', init(), init())
+	a <- enracine('s', ad, init())
+	ad <- a
+	ag <- enracine('v', init(), init())
+	a <- enracine('r', ag, ad)
+	ad <- enracine('b', init(), init())
+	ag <- enracine('q', init(), init())
+	ad <- enracine('p', ag, ad)
+	ag <- enracine('v', init(), init())
+	ag <- enracine('t', ag, ad)
+	a <- enracine('a', a, ag)
+	Retourne a
 Fin
 
 Avec : 
@@ -28,7 +52,7 @@ Debut
 		choix : Entier
 		a : Abin
 		Procedure menu(;)
-		Procedure enracinerJeuxDessais(a : Abin ; a : Abin)
+		Fonction enracinerJeuxDessais() Retourne Abin
 	
 	a <- init()
 	
