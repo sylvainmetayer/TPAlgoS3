@@ -1,0 +1,246 @@
+/* PROGRAMMES PRINCIPAL */ 
+
+/* 
+Cette procédure permet l'affichage du menu
+Parametre : Aucun
+Pré-conditions : Aucune
+*/
+Procedure menu(;)
+Debut
+	Avec :
+	
+	Afficher "--- Menu ---"
+	Afficher "1- Parcours largeur "
+	Afficher "2- Parcours prefixe"
+	Afficher "3- Parcours infixe"
+	Afficher "4- Parcours postfixe"
+	Afficher "5- Hauteur de l'arbre"
+	Afficher "6- Quitter"
+	Afficher "Votre choix :"
+Fin
+
+/* 
+Cette fonction permet de générer le jeu d'essais demandé dans le TP
+Parametre : Aucun
+Pré-conditions : Aucune
+Retourne un arbre avec les valeurs demandées dans le TP
+*/
+Fonction enracinerJeuxDessais() Retourne Abin
+Debut
+	Avec : 
+		a : Abin
+		ag : Abin
+		ad : Abin
+		
+	ad <- enracine('t', init(), init())
+	a <- enracine('s', ad, init())
+	ad <- a
+	ag <- enracine('v', init(), init())
+	a <- enracine('r', ag, ad)
+	ad <- enracine('b', init(), init())
+	ag <- enracine('q', init(), init())
+	ad <- enracine('p', ag, ad)
+	ag <- enracine('v', init(), init())
+	ag <- enracine('t', ag, ad)
+	a <- enracine('a', a, ag)
+	Retourne a
+Fin
+
+Avec : 
+	Module Abin
+Programme Principal 
+Debut 
+	Avec : 
+		choix : Entier
+		a : Abin
+		Procedure menu(;)
+		Fonction enracinerJeuxDessais() Retourne Abin
+	
+	a <- init()
+	
+	Repeter 
+		menu(;)
+		Saisir choix
+		Controler choix > 0 ET choix <= 5
+		
+		Selon choix Faire
+			Cas 1 : //Parcours largeur
+				Si estVide(a) Alors 
+					Afficher "L'arbre est vide"
+				Sinon
+					afficherParcoursLargeur(a;)
+				FinSi
+			Cas 2 : //Parcours prefixe
+				Si estVide(a) Alors 
+					Afficher "L'arbre est vide"
+				Sinon
+					afficherParcoursPrefixe(a;)
+				FinSi
+			Cas 3 : //Parcours infixe
+				Si estVide(a) Alors 
+					Afficher "L'arbre est vide"
+				Sinon
+					afficherParcoursInfixe(a;)
+				FinSi
+			Cas 4 : //Parcours postfixe
+				Si estVide(a) Alors 
+					Afficher "L'arbre est vide"
+				Sinon
+					afficherParcoursPostfixe(a;)
+				FinSi
+			Cas 5 : //Hauteur de l'arbre
+				Afficher "Hauteur de l'arbre : ", hauteur(a)
+			Defaut : //Quitter
+				Afficher "Au revoir !"
+		FinFaire
+	TantQue choix != 6
+	
+	desinit(a;a)
+Fin 
+
+/* FONCTIONS ET PROCEDURES */ 
+
+Fonction init() Retourne Abin
+Debut
+	Avec :
+	
+	Retourne NULL
+Fin
+
+Procédure desinit(a : Abin ; a : Abin)
+Debut
+	Avec :
+	
+	Si non(estVide(a)) Alors
+		desinit(droite(a))
+		desinit(gauche(a))
+		(Contenu a).etiquette <- NULL
+	FinSi
+	Detruire a
+Fin
+
+Fonction estVide(a : Abin) Retourne Booleen
+Debut
+	Avec :
+	Retourne a = NULL
+Fin
+
+Fonction gauche(a : Abin) Retourne Abin
+Debut
+	Avec :
+	
+	Retourne (Contenu a).ag
+Fin
+
+Fonction droite(a : Abin) Retourne Abin
+Debut
+	Avec :
+	
+	Retourne (Contenu a).ad
+Fin
+
+Fonction enracine(e : Element, ag : Abin, ad : Abin) Retourne Abin
+Debut
+	Avec :
+		a : Pointeur Noeud
+		
+		a <- Nouveau Noeud
+		
+		(Contenu a).etiquette <- e
+		(Contenu a).ad <- ad
+		(Contenu a).ag <- ag
+		
+		Retourne a
+Fin
+
+Fonction racine(a : Abin) Retourne Element
+Debut
+	Avec :
+	
+	Retourne (Contenu a).etiquette
+Fin
+
+/* 
+Fonction qui retourne la valeur maximale entre deux entiers
+Parametres : 
+	a : Entier a 
+	b : Entier b
+Retourne a si a > b, b sinon
+*/
+Fonction Maximum(a : Entier, b : Entier) Retourne Entier
+Debut 
+	Avec : 
+	/*Retourne a > b ? a : b GOTO C */
+	Si a > b Alors 
+		Retourne a
+	Sinon
+		Retourne b
+	FinSi
+Fin
+
+Fonction hauteur(a : Abin) Retourne Entier	
+Debut
+	Avec :
+		Fonction Maximum(a : Entier, b : Entier) Retourne Entier
+	
+	Si estVide(a) Alors 
+		Retourne 0
+	Sinon 
+		Retourne 1 + Maximum(hauteur(gauche(a)), hauteur(droite(a)) )
+	
+Fin
+
+Procédure afficherParcoursPostfixe(a : Abin ;)
+Debut
+	Avec :
+	Si non(estVide(a)) Alors
+		afficherParcoursPostfixe(gauche(a))
+		afficherParcoursPostfixe(droite(a))
+		Afficher (Contenu a).etiquette
+	FinSi
+Fin
+
+Procédure afficherParcoursPrefixe(a : Abin ;)
+Debut
+	Avec :
+	Si non(estVide(a)) Alors
+		Afficher (Contenu a).etiquette
+		afficherParcoursPrefixe(gauche(a))
+		afficherParcoursPrefixe(droite(a))
+	FinSi	
+Fin
+
+Avec : 
+	Module FileAttente
+Procédure afficherParcoursLargeur(a : Abin ;)
+Debut
+	Avec :
+		f : FileAttente
+	init(f)
+	ajoutQueue(f, a)
+	TantQue non(estVide(f)) Faire 
+		Si non(estVide(gauche(getTete(f)))) Alors 
+			ajoutQueue(f, gauche(getTete(f)))
+		FinSi 
+		
+		Si non(estVide(droite(getTete(f)))) Alors
+			ajoutQueue(f, droite(getTete(f)))
+		FinSi
+		
+		Afficher racine(getTete(f))
+		retirerTete(f)
+	FinFaire 
+	
+	desinit(f)
+Fin
+	
+Procédure afficherParcoursInfixe(a : Abin ; )
+Debut
+	Avec :
+	Si non(estVide(a)) Alors
+		afficherParcoursInfixe(gauche(a))
+		Afficher (Contenu a).etiquette
+		afficherParcoursInfixe(droite(a))
+	FinSi		
+Fin
+
