@@ -147,9 +147,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="abin.h" />
+    <ClInclude Include="fileAttente.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="abin.cpp" />
+    <ClCompile Include="fileAttente.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -108,10 +108,28 @@ Debut
 	FinSi	
 Fin
 
+Avec : 
+	Module FileAttente
 Procédure afficherParcoursLargeur(a : Abin ;)
 Debut
 	Avec :
+		f : FileAttente
+	init(f)
+	ajoutQueue(f, a)
+	TantQue non(estVide(f)) Faire 
+		Si non(estVide(gauche(getTete(f)))) Alors 
+			ajoutQueue(f, gauche(getTete(f)))
+		FinSi 
+		
+		Si non(estVide(droite(getTete(f)))) Alors
+			ajoutQueue(f, droite(getTete(f)))
+		FinSi
+		
+		Afficher racine(getTete(f))
+		retirerTete(f)
+	FinFaire 
 	
+	desinit(f)
 Fin
 	
 Procédure afficherParcoursInfixe(a : Abin ; )

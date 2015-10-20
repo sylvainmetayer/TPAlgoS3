@@ -1,4 +1,5 @@
 #include "abin.h"
+#include "fileAttente.h"
 
 Abin init()
 {
@@ -93,7 +94,27 @@ void afficherParcoursPrefixe(const Abin a)
 
 void afficherParcoursLargeur(const Abin a)
 {
-	//TODO
+	FileAttente f;
+
+	init(f);
+
+	ajoutQueue(f, a);
+	while (!estVide(f)) {
+		if (!estVide(gauche(getTete(f)))) {
+			ajoutQueue(f, gauche(getTete(f)));
+		}
+
+		if (!estVide(droite(getTete(f)))) {
+			ajoutQueue(f, droite(getTete(f)));
+		}
+		
+		cout << racine(getTete(f));
+		retirerTete(f);
+	}
+
+
+	//desinit(f);
+
 }
 
 void afficherParcoursInfixe(const Abin a)

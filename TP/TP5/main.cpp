@@ -112,5 +112,4 @@ int main(void)
 	} while (choix != 6);
 	
 	desinit(a);
-
 }
