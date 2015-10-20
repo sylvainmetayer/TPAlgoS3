@@ -91,16 +91,21 @@ Fin
 Procédure afficherParcoursPostfixe(a : Abin ;)
 Debut
 	Avec :
-	/* TODO */
-	Si a != NULL Alors
-	
+	Si non(estVide(a)) Alors
+		afficherParcoursPostfixe(gauche(a))
+		afficherParcoursPostfixe(droite(a))
+		Afficher (Contenu a).etiquette
 	FinSi
 Fin
 
 Procédure afficherParcoursPrefixe(a : Abin ;)
 Debut
 	Avec :
-	
+	Si non(estVide(a)) Alors
+		Afficher (Contenu a).etiquette
+		afficherParcoursPrefixe(gauche(a))
+		afficherParcoursPrefixe(droite(a))
+	FinSi	
 Fin
 
 Procédure afficherParcoursLargeur(a : Abin ;)
@@ -112,5 +117,9 @@ Fin
 Procédure afficherParcoursInfixe(a : Abin ; )
 Debut
 	Avec :
-	
+	Si non(estVide(a)) Alors
+		afficherParcoursInfixe(gauche(a))
+		Afficher (Contenu a).etiquette
+		afficherParcoursInfixe(droite(a))
+	FinSi		
 Fin

@@ -38,7 +38,7 @@ Abin enracinerJeuxDessais()
 	ad = enracine('b', init(), init());
 	ag = enracine('q', init(), init());
 	ad = enracine('p', ag, ad);
-	ag = enracine('v', init(), init());
+	ag = enracine('u', init(), init());
 	ag = enracine('t', ag, ad);
 	a = enracine('a', a, ag);
 	return a;

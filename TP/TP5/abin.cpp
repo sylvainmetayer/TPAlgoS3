@@ -75,12 +75,20 @@ int hauteur(const Abin a)
 
 void afficherParcoursPostfixe(const Abin a)
 {
-	//TODO
+	if (!estVide(a)) {
+		afficherParcoursPostfixe(gauche(a));
+		afficherParcoursPostfixe(droite(a));
+		cout << (*a).etiquette;
+	}
 }
 
 void afficherParcoursPrefixe(const Abin a)
 {
-	//TODO
+	if (!estVide(a)) {
+		cout << (*a).etiquette;
+		afficherParcoursPrefixe(gauche(a));
+		afficherParcoursPrefixe(droite(a));
+	}
 }
 
 void afficherParcoursLargeur(const Abin a)
@@ -90,5 +98,9 @@ void afficherParcoursLargeur(const Abin a)
 
 void afficherParcoursInfixe(const Abin a)
 {
-	//TODO
+	if (!estVide(a)) {
+		afficherParcoursInfixe(gauche(a));
+		cout << (*a).etiquette;
+		afficherParcoursInfixe(droite(a));
+	}
 }
