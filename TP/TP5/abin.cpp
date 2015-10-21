@@ -113,7 +113,7 @@ void afficherParcoursLargeur(const Abin a)
 	}
 
 
-	desinit(f);
+	//desinit(f);
 
 }
 

@@ -55,6 +55,7 @@ Debut
 		Fonction enracinerJeuxDessais() Retourne Abin
 	
 	a <- init()
+	a <- enracinerJeuxDessais()
 	
 	Repeter 
 		menu(;)
